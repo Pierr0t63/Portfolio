@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Réalisations</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <ion-card *ngFor="let item of data">
+
+    <ion-row no-padding>
+      <ion-col>
+        <img src="{{item.url_img}}"/>
+      </ion-col>
+    </ion-row>
+
+    <ion-card-content>
+      <ion-card-title text-center>
+        {{item.name}}
+      </ion-card-title>
+      <p text-justify>
+        {{item.description}}
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col text-center>
+        <a href="{{item.url_ext}}">
+          <button ion-button clear small color="danger" icon-start>
+            <ion-icon name='ios-link'></ion-icon>
+            Vers le site
+          </button>
+        </a>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+</ion-content>

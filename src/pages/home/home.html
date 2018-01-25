@@ -3,16 +3,81 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Accueil</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content padding text-wrap>
+  <ion-grid>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <!-- HEADER -->
+    <ion-row no-padding text-center>
+      <ion-col col-12>
+        <h1>KOZLUK Pierre <br> Développeur Web</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding text-center>
+      <ion-col col-12>
+        <h2>Clermont-Ferrand (63)</h2>
+      </ion-col>
+    </ion-row>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <!-- A PROPOS -->
+    <ion-row text-center>
+      <ion-col>
+        <h2>À propos de moi</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col>
+        <img id="avatar" src="img/avatar.png">
+      </ion-col>
+    </ion-row>
+    <ion-row text-justify>
+      <ion-col>
+        <p>
+          Etant issu d'une filiaire scientifique, j'ai pu développer une véritable passion pour les sciences et l'informatique.
+          Ainsi, après avoir obtenu mon Baccalauréat Scientifique option Informatique et Sciences du Numérique (ISN), 
+          j'ai donc décidé de poursuivre mes études dans ce domaine en constante évolution.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <!-- EXPERIENCE -->
+    <ion-row text-center>
+      <ion-col>
+        <h2>Expérience</h2>
+      </ion-col>
+    </ion-row>
+
+    <div *ngFor="let training of trainings" class="training-card">
+      <div text-center>
+        <h3>{{training.name}}</h3>
+        <p>({{training.duration}})</p>
+      </div>
+
+      <ion-row text-justify padding>
+        <ion-col col-12>
+          {{training.description}}
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <!-- COMPETENCES -->
+    <ion-row text-center>
+      <ion-col>
+        <h2>Compétences</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+      <ion-item *ngFor="let skill of skills">
+        <ion-thumbnail item-start>
+          <img src="img/comp/{{skill.name}}.png">
+        </ion-thumbnail>
+        <h3 text-center>{{skill.name}}</h3>
+      </ion-item>
+    </ion-list>
+
+  </ion-grid>
 </ion-content>

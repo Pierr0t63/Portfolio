@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Me contacter</ion-title>
+  </ion-navbar>
+</ion-header> 
+
+<ion-content padding>
+
+  <form method="POST" accept-charset="UTF-8" novalidate (ngSubmit)="onSubmit()" [formGroup]="msgContact" text-center>
+    <!-- *** NOM *** -->
+    <ion-item>
+      <ion-label color="primary" floating>Nom <span class="asterisque">*</span></ion-label>
+      <ion-input type="text" formControlName="nom" id="nom"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( msgContact.get('nom').hasError('required') || msgContact.get('nom').hasError('nom') ) && msgContact.get('nom').touched">
+      <div class="error" *ngIf="msgContact.get('nom').hasError('required') && msgContact.get('nom').touched">
+        Champs obligatoire.
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('nom').hasError('minLength') && msgContact.get('nom').touched">
+        Nom trop court (min. 4 caractères).
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('nom').hasError('maxLength') && msgContact.get('nom').touched">
+        Nom trop long (max. 50 caractères).
+      </div>
+    </ion-item>
+
+    <!-- *** PRENOM *** -->
+    <ion-item>
+      <ion-label color="primary" floating>Prénom <span class="asterisque">*</span></ion-label>
+      <ion-input type="text" formControlName="prenom" id="prenom"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( msgContact.get('prenom').hasError('required') || msgContact.get('prenom').hasError('prenom') ) && msgContact.get('prenom').touched">
+      <div class="error" *ngIf="msgContact.get('prenom').hasError('required') && msgContact.get('prenom').touched">
+        Champs obligatoire.
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('prenom').hasError('minLength') && msgContact.get('prenom').touched">
+        Nom trop court (min. 4 caractères).
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('prenom').hasError('maxLength') && msgContact.get('prenom').touched">
+        Nom trop long (max. 50 caractères).
+      </div>
+    </ion-item>
+    
+    <!-- *** E-MAIL *** -->
+    <ion-item>
+      <ion-label color="primary" floating>E-mail <span class="asterisque">*</span></ion-label>
+      <ion-input type="mail" formControlName="addrMail" id="addrMail"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( msgContact.get('addrMail').hasError('required') || msgContact.get('addrMail').hasError('addrMail') ) && msgContact.get('addrMail').touched">
+      <div class="error" *ngIf="msgContact.get('addrMail').hasError('required') && msgContact.get('addrMail').touched">
+        Champs obligatoire.
+      </div>
+      <div class="error" *ngIf="msgContact.get('addrMail').hasError('email') && msgContact.get('addrMail').touched">
+        Adresse non valide.
+      </div>
+    </ion-item>
+
+    <!-- *** TELEPHONE *** -->
+    <ion-item>
+      <ion-label color="primary" floating>Téléphone</ion-label>
+      <ion-input type="text" formControlName="tel" id="tel"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( msgContact.get('tel').hasError('required') || msgContact.get('tel').hasError('tel') ) && msgContact.get('tel').touched">
+      <div class="error" *ngIf="msgContact.get('tel').hasError('minLength') && msgContact.get('tel').touched">
+        Numéro non valide (10 caractères).
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('tel').hasError('maxLength') && msgContact.get('tel').touched">
+        Numéro non valide (10 caractères).
+      </div>
+    </ion-item>
+    
+    <!-- *** RAISON *** -->
+    <ion-item>
+      <ion-label color="primary" floating>Raison <span class="asterisque">*</span></ion-label>
+      <ion-select formControlName="raison" id="raison">
+        <ion-option value="1">Professionnelle</ion-option>
+        <ion-option value="2">Personnelle</ion-option>
+        <ion-option value="3">Autre</ion-option>
+      </ion-select> 
+    </ion-item>
+    <ion-item no-lines *ngIf="( msgContact.get('raison').hasError('required') || msgContact.get('raison').hasError('raison') ) && msgContact.get('raison').touched">
+      <div class="error" *ngIf="msgContact.get('raison').hasError('required') && msgContact.get('raison').touched">
+        Champs obligatoire.
+      </div>
+    </ion-item>
+
+    <!-- *** SUJET *** -->
+    <ion-item>
+      <ion-label color="primary" floating>Sujet <span class="asterisque">*</span></ion-label>
+      <ion-input type="text" formControlName="sujet" id="sujet"></ion-input>
+    </ion-item>
+    <ion-item no-lines *ngIf="( msgContact.get('sujet').hasError('required') || msgContact.get('sujet').hasError('sujet') ) && msgContact.get('sujet').touched">
+      <div class="error" *ngIf="msgContact.get('sujet').hasError('required') && msgContact.get('sujet').touched">
+        Champs obligatoire.
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('sujet').hasError('minLength') && msgContact.get('sujet').touched">
+        Nom trop court (min. 10 caractères).
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('sujet').hasError('maxLength') && msgContact.get('sujet').touched">
+        Nom trop long (max. 100 caractères).
+      </div>
+    </ion-item>
+    
+    
+    <!-- *** MESSAGE *** -->
+    <ion-item>
+      <ion-label color="primary" floating>Message <span class="asterisque">*</span></ion-label>
+      <ion-textarea formControlName="msguser" id="msguser"></ion-textarea>
+    </ion-item>
+    <ion-item no-lines *ngIf="( msgContact.get('msguser').hasError('required') || msgContact.get('msguser').hasError('msguser') ) && msgContact.get('msguser').touched">
+      <div class="error" *ngIf="msgContact.get('msguser').hasError('required') && msgContact.get('msguser').touched">
+        Champs obligatoire.
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('msguser').hasError('minLength') && msgContact.get('msguser').touched">
+        Nom trop court (min. 20 caractères).
+      </div>
+
+      <div class="error" *ngIf="msgContact.get('msgUser').hasError('maxLength') && msgContact.get('msgUser').touched">
+        Nom trop long (max. 500 caractères).
+      </div>
+    </ion-item>
+
+    <ion-item text-center>
+      <button ion-button [disabled]="msgContact.invalid">Envoyer !</button>
+    </ion-item>
+    <p><span id="notice" class="text-center">* : Champs obligatoire</span></p>
+  </form>
+
+</ion-content>
