@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Http } from '@angular/http';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'page-contact',
@@ -29,37 +30,10 @@ export class ContactPage implements OnInit{
             sujet: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
             msguser: new FormControl('', [Validators.required, Validators.minLength(20), Validators.maxLength(500)])
         });
+
     }
 
-    onSubmit(){
-        let nom = this.msgContact.get(['nom']).value;
-        let prenom = this.msgContact.get(['prenom']).value;
-        let addrMail = this.msgContact.get(['addrMail']).value;
-        let tel = this.msgContact.get(['tel']).value;
-
-        switch(this.msgContact.get(['raison']).value) { 
-           case 1: { 
-               let raison = "Pro";
-              break; 
-           } 
-           case 2: { 
-               let raison = "Perso";
-              break; 
-           } 
-           case 3: { 
-               let raison = "Divers";
-              break; 
-           } 
-           default: { 
-               let raison = "Divers";
-              break; 
-           } 
-        } 
-
-
-        let sujet = this.msgContact.get(['sujet']).value;
-        let msguser = this.msgContact.get(['msguser']).value;
-
+    onSubmit(){         
         console.log(this.msgContact.value);
         this.http.post('https://www.aformac-vichy-app6.ovh/api/sendmail?api_token=qaTQ01WaLvHehLoTvEnW9lcHYNCZANU3r4rmVmWppnvyaNgsjKYDhZ8BX124', JSON.stringify(this.msgContact.value)).subscribe(
             data => {
