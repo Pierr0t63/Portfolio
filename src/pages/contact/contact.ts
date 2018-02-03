@@ -52,7 +52,7 @@ export class ContactPage implements OnInit{
             error => {
                 let alertSuccess = this.alertCtrl.create({
                     title: 'Oops !',
-                    subTitle: 'Il semblerait qu\'un problème soit survenu lors de l\'envoi. Veuillez réessayer ultérieurement ou me contacter directement à kozluk.pierre(at)gmail(dot)com.',
+                    subTitle: 'Il semblerait qu\'un problème soit survenu lors de l\'envoi. Veuillez réessayer ultérieurement.',
                     buttons: ['OK']
                 });
                 loading.dismiss();
