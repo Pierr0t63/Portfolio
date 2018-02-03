@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
-import { FormControl, FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'page-contact',
@@ -15,8 +13,8 @@ export class ContactPage implements OnInit{
 	constructor(public navCtrl: NavController,
                 private formCtc: FormBuilder,
                 public alertCtrl: AlertController,
-                private emailComposer: EmailComposer,
-                public http: Http) {
+                public http: Http,
+                public loadingCtrl: LoadingController) {
 
 	}
 
@@ -33,26 +31,31 @@ export class ContactPage implements OnInit{
 
     }
 
-    onSubmit(){         
-        console.log(this.msgContact.value);
+    onSubmit(){ 
+        let loading = this.loadingCtrl.create({
+            content: "Chargement ..."
+        });
+        loading.present();     
         this.http.post('https://www.aformac-vichy-app6.ovh/api/sendmail?api_token=qaTQ01WaLvHehLoTvEnW9lcHYNCZANU3r4rmVmWppnvyaNgsjKYDhZ8BX124', JSON.stringify(this.msgContact.value)).subscribe(
             data => {
-                console.log(data);
                 let alertSuccess = this.alertCtrl.create({
                     title: 'Message envoyé !',
                     subTitle: 'Merci d\'avoir pris le temps de m\'écrire.',
                     buttons: ['OK']
                 });
+
+                this.msgContact.reset();
+                loading.dismiss();
                 alertSuccess.present();
 
             },
             error => {
-                console.log(error);
                 let alertSuccess = this.alertCtrl.create({
                     title: 'Oops !',
                     subTitle: 'Il semblerait qu\'un problème soit survenu lors de l\'envoi. Veuillez réessayer ultérieurement ou me contacter directement à kozluk.pierre(at)gmail(dot)com.',
                     buttons: ['OK']
                 });
+                loading.dismiss();
                 alertSuccess.present();
             }
         );

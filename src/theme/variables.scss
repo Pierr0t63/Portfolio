@@ -23,7 +23,17 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
+$background-ios-color: #202020;
+$background-md-color: #202020;
+$background-wp-color: #202020;
 
+$label-ios-text-color-focused: #FDD736;
+$label-md-text-color-focused: #FDD736;
+$label-wp-text-color-focused: #FDD736;
+
+$text-input-highlight-color-invalid: #FF6262;
+$text-input-ios-highlight-color-invalid: #FF6262;
+$text-input-wp-highlight-color-invalid: #FF6262;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -34,11 +44,14 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
+  primary:    #202020,
+  secondary:  #FDD736,
+  tertary:    #484848,
+  danger:     #FF6262,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  blanc: #FFFFFF,
+  noir: #000000
 );
 
 

@@ -1,19 +1,19 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Me contacter</ion-title>
+    <ion-title color="secondary">Me contacter</ion-title>
   </ion-navbar>
 </ion-header> 
 
-<ion-content padding>
+<ion-content padding color="primary">
 
   <form method="POST" accept-charset="UTF-8" novalidate (ngSubmit)="onSubmit()" [formGroup]="msgContact" text-center>
     <!-- *** NOM *** -->
     <ion-item>
-      <ion-label color="primary" floating>Nom <span class="asterisque">*</span></ion-label>
-      <ion-input type="text" formControlName="nom" id="nom"></ion-input>
+      <ion-label color="secondary" floating>Nom <span class="asterisque">*</span></ion-label>
+      <ion-input color="blanc" type="text" formControlName="nom" id="nom" color="secondary"></ion-input>
     </ion-item>
     <ion-item no-lines *ngIf="( msgContact.get('nom').hasError('required') || msgContact.get('nom').hasError('nom') ) && msgContact.get('nom').touched">
       <div class="error" *ngIf="msgContact.get('nom').hasError('required') && msgContact.get('nom').touched">
@@ -31,7 +31,7 @@
 
     <!-- *** PRENOM *** -->
     <ion-item>
-      <ion-label color="primary" floating>Prénom <span class="asterisque">*</span></ion-label>
+      <ion-label color="secondary" floating>Prénom <span class="asterisque">*</span></ion-label>
       <ion-input type="text" formControlName="prenom" id="prenom"></ion-input>
     </ion-item>
     <ion-item no-lines *ngIf="( msgContact.get('prenom').hasError('required') || msgContact.get('prenom').hasError('prenom') ) && msgContact.get('prenom').touched">
@@ -50,7 +50,7 @@
     
     <!-- *** E-MAIL *** -->
     <ion-item>
-      <ion-label color="primary" floating>E-mail <span class="asterisque">*</span></ion-label>
+      <ion-label color="secondary" floating>E-mail <span class="asterisque">*</span></ion-label>
       <ion-input type="mail" formControlName="addrMail" id="addrMail"></ion-input>
     </ion-item>
     <ion-item no-lines *ngIf="( msgContact.get('addrMail').hasError('required') || msgContact.get('addrMail').hasError('addrMail') ) && msgContact.get('addrMail').touched">
@@ -64,7 +64,7 @@
 
     <!-- *** TELEPHONE *** -->
     <ion-item>
-      <ion-label color="primary" floating>Téléphone</ion-label>
+      <ion-label color="secondary" floating>Téléphone</ion-label>
       <ion-input type="text" formControlName="tel" id="tel"></ion-input>
     </ion-item>
     <ion-item no-lines *ngIf="( msgContact.get('tel').hasError('required') || msgContact.get('tel').hasError('tel') ) && msgContact.get('tel').touched">
@@ -79,11 +79,11 @@
     
     <!-- *** RAISON *** -->
     <ion-item>
-      <ion-label color="primary" floating>Raison <span class="asterisque">*</span></ion-label>
-      <ion-select formControlName="raison" id="raison">
-        <ion-option value="1">Professionnelle</ion-option>
-        <ion-option value="2">Personnelle</ion-option>
-        <ion-option value="3">Autre</ion-option>
+      <ion-label color="secondary" floating>Raison <span class="asterisque">*</span></ion-label>
+      <ion-select formControlName="raison" id="raison" color="blanc">
+        <ion-option value="1" color="blanc">Professionnelle</ion-option>
+        <ion-option value="2" color="blanc">Personnelle</ion-option>
+        <ion-option value="3" color="blanc">Autre</ion-option>
       </ion-select> 
     </ion-item>
     <ion-item no-lines *ngIf="( msgContact.get('raison').hasError('required') || msgContact.get('raison').hasError('raison') ) && msgContact.get('raison').touched">
@@ -94,7 +94,7 @@
 
     <!-- *** SUJET *** -->
     <ion-item>
-      <ion-label color="primary" floating>Sujet <span class="asterisque">*</span></ion-label>
+      <ion-label color="secondary" floating>Sujet <span class="asterisque">*</span></ion-label>
       <ion-input type="text" formControlName="sujet" id="sujet"></ion-input>
     </ion-item>
     <ion-item no-lines *ngIf="( msgContact.get('sujet').hasError('required') || msgContact.get('sujet').hasError('sujet') ) && msgContact.get('sujet').touched">
@@ -114,7 +114,7 @@
     
     <!-- *** MESSAGE *** -->
     <ion-item>
-      <ion-label color="primary" floating>Message <span class="asterisque">*</span></ion-label>
+      <ion-label color="secondary" floating>Message <span class="asterisque">*</span></ion-label>
       <ion-textarea formControlName="msguser" id="msguser"></ion-textarea>
     </ion-item>
     <ion-item no-lines *ngIf="( msgContact.get('msguser').hasError('required') || msgContact.get('msguser').hasError('msguser') ) && msgContact.get('msguser').touched">
@@ -132,9 +132,9 @@
     </ion-item>
 
     <ion-item text-center>
-      <button ion-button [disabled]="msgContact.invalid">Envoyer !</button>
+      <button ion-button [disabled]="msgContact.invalid" color="secondary">Envoyer !</button>
     </ion-item>
-    <p><span id="notice" class="text-center">* : Champs obligatoire</span></p>
+    <p color="secondary"><span id="notice" class="text-center">* : Champs obligatoire</span></p>
   </form>
 
 </ion-content>

@@ -14,3 +14,49 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.content-md,
+.content-ios,
+.content-wp,
+.text-input-md,
+.text-input-ios,
+.text-input-wp{ 
+    color: #FFFFFF;
+}
+.content-md,
+.content-ios,
+.content-wp,
+.item-md,
+form{
+    background-color: #202020;
+}
+
+ion-title, // Titres Menu
+ion-label, // Liens Menu
+.list-md .item-block .item-inner,
+.toolbar-md-primary .bar-button-clear-md, 
+ .toolbar-md-primary .bar-button-default-md, 
+  .toolbar-md-primary .bar-button-outline-md,
+   .toolbar-md-primary .toolbar-title-md,
+.list-ios .item-block .item-inner,
+.item-ios,
+.toolbar-ios-primary .bar-button-clear-ios, 
+ .toolbar-ios-primary .bar-button-default-ios, 
+  .toolbar-ios-primary .bar-button-outline-ios,
+   .toolbar-ios-primary .toolbar-title-ios,
+   .list-ios > .item-block:last-child,
+    .list-ios > .item-wrapper:last-child .item-block,
+.item-wp,
+.toolbar-wp-primary .bar-button-clear-wp, 
+ .toolbar-wp-primary .bar-button-default-wp, 
+  .toolbar-wp-primary .bar-button-outline-wp,
+   .toolbar-wp-primary .toolbar-title-wp,
+   .list-wp > .item-block:last-child,
+    .list-wp > .item-wrapper:last-child .item-block
+{
+    background-color: #202020;
+    color: #FDD736;
+    border-color: #FDD736;
+}
+.error{
+    color: #FF6262;
+}
